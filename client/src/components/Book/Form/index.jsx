@@ -2,6 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import SearchBar from '../../SearchBar'
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,7 @@ class Form extends React.Component {
       title: '',
       body: '',
       author: '',
+      editing: true
     }
 
     this.handleChangeField = this.handleChangeField.bind(this);
@@ -26,6 +29,17 @@ class Form extends React.Component {
     }
   }
 
+  handleSave(title, body, author) {
+    const { onSubmit, bookToEdit, onEdit } = this.props;
+    return axios.post('http://localhost:8000/api/books', {
+        title,
+        body,
+        author,
+      })
+        .then((res) => onSubmit(res.data))
+        .then(() => this.setState({ title: '', body: '', author: '' }));
+  }
+
   handleSubmit(){
     const { onSubmit, bookToEdit, onEdit } = this.props;
     const { title, body, author } = this.state;
@@ -39,13 +53,14 @@ class Form extends React.Component {
         .then((res) => onSubmit(res.data))
         .then(() => this.setState({ title: '', body: '', author: '' }));
     } else {
+      
       return axios.patch(`http://localhost:8000/api/books/${bookToEdit._id}`, {
         title,
         body,
         author,
       })
         .then((res) => onEdit(res.data))
-        .then(() => this.setState({ title: '', body: '', author: '' }));
+        .then(() => this.setState({ title: '', body: '', author: ''}));
     }
   }
 
@@ -56,11 +71,15 @@ class Form extends React.Component {
   }
 
   render() {
-    const { bookToEdit } = this.props;
+    const { bookToEdit, isEditing } = this.props;
     const { title, body, author } = this.state;
 
     return (
-      <div className="col-12 col-lg-6 offset-lg-3">
+      <div>
+        <SearchBar handleSave={this.handleSave.bind(this)} />
+        {
+         isEditing && title != '' && body != '' && author !='' ? 
+         <div className="sticky col-12 col-lg-6 offset-lg-3">
         <div class="">Title</div>
         <input
           onChange={(ev) => this.handleChangeField('title', ev)}
@@ -83,6 +102,10 @@ class Form extends React.Component {
           placeholder="Book Author"
         />
         <button onClick={this.handleSubmit} className="btn btn-primary float-right">{bookToEdit ? 'Update' : 'Submit'}</button>
+      </div>
+      : null
+        }
+      
       </div>
     )
   }

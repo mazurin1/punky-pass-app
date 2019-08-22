@@ -3,10 +3,10 @@ import axios from 'axios';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import NavBar from '../NavBar'
-import SearchBar from '../SearchBar'
 
 
 import { Form } from '../../components/Book';
+import { set } from 'mongoose';
 
 class Home extends React.Component {
   constructor(props) {
@@ -14,7 +14,9 @@ class Home extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-
+    this.state = {
+      editing: false
+    }
   }
 
   componentDidMount() {
@@ -33,7 +35,9 @@ class Home extends React.Component {
 
   handleEdit(book) {
     const { setEdit } = this.props;
-
+    this.setState({
+      editing: true
+    })
     setEdit(book);
   }
 
@@ -47,14 +51,12 @@ class Home extends React.Component {
         </div>
         <div className="container">
           <div className="row pt-5">
-            <div className="col-12 col-lg-6 offset-lg-3">
-              <h1 className="text-center">PunkyPass, an app for avid book readers</h1>
+            <div className="col-12 col-lg-12">
+              <h1 className="text-center">This is your digital library. What books have you read?</h1>
             </div>
-            <SearchBar/>
-            <Form />
           </div>
           <div className="row pt-5">
-            <div className="col-12 col-lg-6 offset-lg-3">
+            <div className="col-6 col-lg-6 ">
               {books.map((book) => {
                 return (
                   <div className="card my-3">
@@ -64,8 +66,9 @@ class Home extends React.Component {
                     <div className="card-body">
                       Description: {book.body}
                       <p className="mt-5 text-muted"><b>Author: {book.author}</b>
-                      <div>Updated: {moment(new Date(book.createdAt)).fromNow()}
-                      </div>
+                      </p>
+                      <p>Added: {moment(new Date(book.createdAt)).fromNow()}
+                
                       </p>
                     </div>
                     <div className="card-footer">
@@ -81,6 +84,9 @@ class Home extends React.Component {
                   </div>
                 )
               })}
+            </div>
+            <div class="col-6 col-lg-6 ">
+             <Form isEditing={this.state.editing} />
             </div>
           </div>
         </div>

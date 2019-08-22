@@ -7,3 +7,14 @@ body, html {
   color: rgba(0,0,0,.75);
   font-family: 'Nunito';
 }
+.sticky {
+  position: fixed; top: 150px; right: 0px;
+  background: #ccc;
+  border-radius: 15px;
+  padding: 15px;
+  z-index: 9999;
+}
+
+.icon-color {
+  color: #E6E200;
+}

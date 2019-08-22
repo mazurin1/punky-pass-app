@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         height: 450,
     },
     icon: {
-        color: 'rgba(255, 255, 255, 0.54)',
+        color: '#E6E200',
     },
     container: {
         display: 'flex',
@@ -53,14 +53,16 @@ class SearchBar extends React.Component {
             tileData: [],
             search: ''
         }
+
+        this.props = props;
+
         this.handleSearch = this.handleSearch.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(title, description, authors){
-        alert(title)
-        alert(description)
-        alert(authors)
+
+        this.props.handleSave(title, description, authors.join(','))
     }
 
 
@@ -86,6 +88,8 @@ class SearchBar extends React.Component {
     render() {
 
         const classes = useStyles;
+        const { handleSave } = this.props
+
 
         console.log(classes);
 
@@ -109,14 +113,14 @@ class SearchBar extends React.Component {
                             <ListSubheader component="div"></ListSubheader>
                         </GridListTile>
                         {this.state.tileData.map(tile => (
-                            <GridListTile key={tile.thumbnail}>
+                            <GridListTile key={tile.identifier}>
                                 <img src={tile.thumbnail} alt={tile.title} />
                                 <GridListTileBar
                                     title={tile.title}
                                     subtitle={<span>by: {tile.authors.join(',')}</span>}
                                     actionIcon={
                                         <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                                            <InfoIcon onClick={(event) => this.handleClick(tile.title, tile.description, tile.authors) } />
+                                            <InfoIcon className="icon-color" onClick={(event) => this.handleClick(tile.title, tile.description, tile.authors) } />
                                         </IconButton>
                                     }
                                 />
