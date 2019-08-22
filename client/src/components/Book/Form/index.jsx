@@ -61,18 +61,21 @@ class Form extends React.Component {
 
     return (
       <div className="col-12 col-lg-6 offset-lg-3">
+        <div class="">Title</div>
         <input
           onChange={(ev) => this.handleChangeField('title', ev)}
           value={title}
           className="form-control my-3"
           placeholder="Book Title"
         />
+        <div class="">Description</div>
         <textarea
           onChange={(ev) => this.handleChangeField('body', ev)}
           className="form-control my-3"
           placeholder="Book Body"
           value={body}>
         </textarea>
+        <div class="">Author</div>
         <input
           onChange={(ev) => this.handleChangeField('author', ev)}
           value={author}

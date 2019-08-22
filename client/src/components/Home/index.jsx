@@ -59,11 +59,14 @@ class Home extends React.Component {
                 return (
                   <div className="card my-3">
                     <div className="card-header">
-                      {book.title}
+                      Title: {book.title}
                     </div>
                     <div className="card-body">
-                      {book.body}
-                      <p className="mt-5 text-muted"><b>{book.author}</b> {moment(new Date(book.createdAt)).fromNow()}</p>
+                      Description: {book.body}
+                      <p className="mt-5 text-muted"><b>Author: {book.author}</b>
+                      <div>Updated: {moment(new Date(book.createdAt)).fromNow()}
+                      </div>
+                      </p>
                     </div>
                     <div className="card-footer">
                       <div className="row">

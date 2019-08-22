@@ -75,7 +75,7 @@ export default function NavBar() {
           >
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            PunkyPass
           </Typography>
         
         </Toolbar>
