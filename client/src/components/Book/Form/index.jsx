@@ -101,6 +101,13 @@ class Form extends React.Component {
           className="form-control my-3"
           placeholder="Book Author"
         />
+        <div class="">Notes</div>
+        <input
+          onChange={(ev) => this.handleChangeField('notes', ev)}
+          value={""}
+          className="form-control my-3"
+          placeholder="Book Notes"
+        />
         <button onClick={this.handleSubmit} className="btn btn-primary float-right">{bookToEdit ? 'Update' : 'Submit'}</button>
       </div>
       : null

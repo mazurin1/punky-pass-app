@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import logo from './img/Untitled.png'
 
 
 const useStyles = makeStyles(theme => ({
@@ -74,9 +75,12 @@ export default function NavBar() {
             aria-label="open drawer"
           >
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          {/* <Typography className={classes.title} variant="h6" noWrap>
             PunkyPass
-          </Typography>
+          </Typography> */}
+
+        <img src={logo} alt={"logo"} width="200"/> 
+
         
         </Toolbar>
       </AppBar>
