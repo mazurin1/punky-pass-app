@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost/punkypass');
 mongoose.set('debug', true);
 
 // Add models
-require('./models/Articles');
+require('./models/Books');
 
 // Add routes
 app.use(require('./routes'));

@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const ArticlesSchema = new Schema({
+const BooksSchema = new Schema({
   title: String,
   body: String,
   author: String,
 }, { timestamps: true });
 
-ArticlesSchema.methods.toJSON = function() {
+BooksSchema.methods.toJSON = function() {
   return {
     _id: this._id,
     title: this.title,
@@ -19,4 +19,4 @@ ArticlesSchema.methods.toJSON = function() {
   };
 };
 
-mongoose.model('Articles', ArticlesSchema);
+mongoose.model('Books', BooksSchema);

@@ -1,37 +1,37 @@
-export default (state={articles: []}, action) => {
+export default (state={books: []}, action) => {
   switch(action.type) {
     case 'HOME_PAGE_LOADED':
       return {
         ...state,
-        articles: action.data.articles,
+        books: action.data.books,
       };
-    case 'SUBMIT_ARTICLE':
+    case 'SUBMIT_BOOK':
       return {
         ...state,
-        articles: ([action.data.article]).concat(state.articles),
+        books: ([action.data.book]).concat(state.books),
       };
-    case 'DELETE_ARTICLE':
+    case 'DELETE_BOOK':
       return {
         ...state,
-        articles: state.articles.filter((article) => article._id !== action.id),
+        books: state.books.filter((book) => book._id !== action.id),
       };
     case 'SET_EDIT':
       return {
         ...state,
-        articleToEdit: action.article,
+        bookToEdit: action.book,
       };
-    case 'EDIT_ARTICLE':
+    case 'EDIT_BOOK':
       return {
         ...state,
-        articles: state.articles.map((article) => {
-          if(article._id === action.data.article._id) {
+        books: state.books.map((book) => {
+          if(book._id === action.data.book._id) {
             return {
-              ...action.data.article,
+              ...action.data.book,
             }
           }
-          return article;
+          return book;
         }),
-        articleToEdit: undefined,
+        bookToEdit: undefined,
       }
     default:
       return state;
