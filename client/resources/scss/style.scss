@@ -37,12 +37,25 @@ body, html {
 
 .text-center {
   text-align: center !important;
-  padding: 30px;
+  padding-top: 30px;
+  color: #353535f5;
+  // border-image-source:url(../img/Book-Recommendations.jpg);
 }
 
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-  background-color: #2C0084;
+  background-color: rgb(42, 8, 111);
   color: white;
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #83003F;
+  border-color: #83003F;
+}

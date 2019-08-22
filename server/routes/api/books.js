@@ -111,7 +111,8 @@ router.post('/search', (req, res, next) => {
   books.search(body.search, function(error, results) {
       if ( ! error ) {
           console.log(results);
-          return res.status(200).json({results:results});
+          var filteredResults = results.filter(book => book.authors && book.authors.length && book.title && book.description && book.thumbnail)
+          return res.status(200).json({results:filteredResults});
       } else {
           console.log(error);
       }
