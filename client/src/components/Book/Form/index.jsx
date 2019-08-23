@@ -12,6 +12,7 @@ class Form extends React.Component {
       title: '',
       body: '',
       author: '',
+      notes: '',
       editing: true
     }
 
@@ -25,42 +26,47 @@ class Form extends React.Component {
         title: nextProps.bookToEdit.title,
         body: nextProps.bookToEdit.body,
         author: nextProps.bookToEdit.author,
+        notes: nextProps.bookToEdit.notes,
+
       });
     }
   }
 
-  handleSave(title, body, author) {
+  handleSave(title, body, author,notes) {
     const { onSubmit, bookToEdit, onEdit } = this.props;
     return axios.post('http://localhost:8000/api/books', {
         title,
         body,
         author,
+        notes,
       })
         .then((res) => onSubmit(res.data))
-        .then(() => this.setState({ title: '', body: '', author: '' }));
+        .then(() => this.setState({ title: '', body: '', author: '', notes:'' }));
   }
 
   handleSubmit(){
     const { onSubmit, bookToEdit, onEdit } = this.props;
-    const { title, body, author } = this.state;
+    const { title, body, author, notes } = this.state;
 
     if(!bookToEdit) {
       return axios.post('http://localhost:8000/api/books', {
         title,
         body,
         author,
+        notes,
       })
         .then((res) => onSubmit(res.data))
-        .then(() => this.setState({ title: '', body: '', author: '' }));
+        .then(() => this.setState({ title: '', body: '', author: '', notes: '' }));
     } else {
       
       return axios.patch(`http://localhost:8000/api/books/${bookToEdit._id}`, {
         title,
         body,
         author,
+        notes,
       })
         .then((res) => onEdit(res.data))
-        .then(() => this.setState({ title: '', body: '', author: ''}));
+        .then(() => this.setState({ title: '', body: '', author: '', notes: ''}));
     }
   }
 
@@ -72,7 +78,7 @@ class Form extends React.Component {
 
   render() {
     const { bookToEdit, isEditing } = this.props;
-    const { title, body, author } = this.state;
+    const { title, body, author, notes } = this.state;
 
     return (
       <div>
@@ -82,6 +88,7 @@ class Form extends React.Component {
          <div className="sticky col-12 col-lg-6 offset-lg-3">
         <div class="">Title</div>
         <input
+          fieldset disabled={true}
           onChange={(ev) => this.handleChangeField('title', ev)}
           value={title}
           className="form-control my-3"
@@ -89,6 +96,7 @@ class Form extends React.Component {
         />
         <div class="">Description</div>
         <textarea
+          fieldset disabled={true}
           onChange={(ev) => this.handleChangeField('body', ev)}
           className="form-control my-3"
           placeholder="Book Body"
@@ -96,6 +104,7 @@ class Form extends React.Component {
         </textarea>
         <div class="">Author</div>
         <input
+          fieldset disabled={true}
           onChange={(ev) => this.handleChangeField('author', ev)}
           value={author}
           className="form-control my-3"

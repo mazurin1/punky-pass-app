@@ -60,9 +60,9 @@ class SearchBar extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(title, description, authors){
+    handleClick(title, description, authors, notes){
 
-        this.props.handleSave(title, description, authors.join(','))
+        this.props.handleSave(title, description, authors, notes.join(','))
     }
 
 
@@ -97,10 +97,10 @@ class SearchBar extends React.Component {
             <div>
                 <div className={classes.root}>
                 <TextField
-                    id="outlined-search"
-                    label="Search books"
-                    type="search"
-                    className={classes.textFielda}
+                    id="standard-helperText"
+                    label="Search Bar"
+                    placeholder="Find title, author, isbn"
+                    className={classes.textField}
                     margin="normal"
                     variant="outlined"
                     onKeyPress={(event) => this.handleSearch(event)}
@@ -108,7 +108,7 @@ class SearchBar extends React.Component {
                 />
                 </div>
                 <div className={classes.root}>
-                    <GridList cellHeight={180} className={classes.gridList}>
+                    <GridList cellHeight={200} className={classes.gridList}>
                         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                             <ListSubheader component="div"></ListSubheader>
                         </GridListTile>
