@@ -52,7 +52,7 @@ class Home extends React.Component {
         <div className="container">
           <div className="row pt-5">
             <div className="col-12 col-lg-12">
-            <h1 className="text-center">This is your digital library. What books have you read?</h1>
+            <h1 className="text-center ungrid">This is your digital library. What books have you read?</h1>
 
             </div>
           </div>
@@ -67,9 +67,9 @@ class Home extends React.Component {
       
                     </div>
                     <div className="card-body">
-                      <b className="font-color">Description:</b> <b className="font-style">{book.body}</b>
+                      <p className="font-color">Description:</p> <p className="font-style">{book.body}</p>
                       
-                      <p className="mt-3 text-muted"><b>Notes: {book.notes}</b>
+                      <p className="mt-3 font-color"><b>Notes: {book.notes}</b>
                       </p>
                       <p className="mt-5"> Added: {moment(new Date(book.createdAt)).fromNow()}
                 

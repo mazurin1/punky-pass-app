@@ -38,7 +38,15 @@ body, html {
 .text-center {
   text-align: center !important;
   padding-top: 30px;
-  color: #353535f5;
+  color: black;
+  text-shadow: 3px 3px lightgrey;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  // background-image: url(../img/Untitled-design.png);
+  background-color: yellow;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white 1px 1px 0 white;
+
   // border-image-source:url(../img/Book-Recommendations.jpg);
 }
 
@@ -56,14 +64,32 @@ body, html {
 
 .btn-danger {
   color: #fff;
-  background-color: #83003F;
-  border-color: #83003F;
+  background-color: rgb(213, 10, 10);
+  border-color: rgb(213, 10, 10);
 }
 
 .font-color{
-  color: rgb(42, 8, 111);
+  color: black;
+  text-decoration: underline;
+  font-weight: 900;
+
 }
 
 .font-style{
-  font-style: italic;
+  color: black;
+  font-size: 16px;
+}
+
+.text-center{
+  font-weight: bolder;
+}
+
+.text-muted {
+  color: white !important;
+}
+
+.pt-5, .py-5 {
+  /* padding-top: 3rem !important; */
+  padding-bottom: -2rem;
+  padding-top: 40px;
 }
