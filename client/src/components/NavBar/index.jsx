@@ -74,14 +74,13 @@ export default function NavBar() {
             color="inherit"
             aria-label="open drawer"
           >
-          </IconButton>
-          {/* <Typography className={classes.title} variant="h6" noWrap>
-            PunkyPass
+            </IconButton>
+            {/* <Typography className={classes.title} variant="h6" noWrap>
+              PunkyPass
           </Typography> */}
 
-        <img src={logo} alt={"logo"} width="200"/> 
+            <img src={logo} alt={"logo"} width="200" />
 
-        
         </Toolbar>
       </AppBar>
     </div>
