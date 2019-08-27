@@ -7,7 +7,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 
 const useStyles = makeStyles(theme => ({
@@ -60,9 +60,9 @@ class SearchBar extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(title, description, authors, notes){
+    handleClick(title, description, authors, thumbnail){
 
-        this.props.handleSave(title, description, authors, notes.join(','))
+        this.props.handleSave(title, description, authors.join(','), thumbnail)
     }
 
 
@@ -98,7 +98,7 @@ class SearchBar extends React.Component {
                 <div className={classes.root}>
                 <TextField
                     id="standard-helperText"
-                    label="Search Bar"
+                    label="Search Books"
                     placeholder="Find title, author, isbn"
                     className={classes.textField}
                     margin="normal"
@@ -120,7 +120,7 @@ class SearchBar extends React.Component {
                                     subtitle={<span>by: {tile.authors.join(',')}</span>}
                                     actionIcon={
                                         <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                                            <InfoIcon className="icon-color" onClick={(event) => this.handleClick(tile.title, tile.description, tile.authors) } />
+                                            <AddCircleIcon className="icon-color" onClick={(event) => this.handleClick(tile.title, tile.description, tile.authors, tile.thumbnail) } />
                                         </IconButton>
                                     }
                                 />

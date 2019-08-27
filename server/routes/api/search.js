@@ -4,7 +4,7 @@ var options = {
     key: "YOUR API KEY",
     field: 'title',
     offset: 0,
-    limit: 10,
+    limit: 12,
     type: 'books',
     order: 'relevance',
     lang: 'en'

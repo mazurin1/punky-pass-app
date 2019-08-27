@@ -74,6 +74,10 @@ router.patch('/:id', (req, res, next) => {
     req.book.body = body.body;
   }
 
+  if(typeof body.notes !== 'undefined') {
+    req.book.notes = body.notes;
+  }
+
   return req.book.save()
     .then(() => res.json({ book: req.book.toJSON() }))
     .catch(next);
@@ -102,7 +106,7 @@ router.post('/search', (req, res, next) => {
       key: "AIzaSyCt01gDpWa9Wh12bmWL2Dmlk8_3F7SyYR8",
       field: 'title',
       offset: 0,
-      limit: 10,
+      limit: 12,
       type: 'books',
       order: 'relevance',
       lang: 'en'

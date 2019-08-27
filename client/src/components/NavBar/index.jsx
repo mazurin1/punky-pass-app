@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import logo from './img/Untitled.png'
+import logo from './img/Untitled-1.png'
 
 
 const useStyles = makeStyles(theme => ({

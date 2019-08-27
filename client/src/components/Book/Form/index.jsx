@@ -12,6 +12,7 @@ class Form extends React.Component {
       title: '',
       body: '',
       author: '',
+      thumbnail: '',
       notes: '',
       editing: true
     }
@@ -32,16 +33,16 @@ class Form extends React.Component {
     }
   }
 
-  handleSave(title, body, author,notes) {
+  handleSave(title, body, author,thumbnail) {
     const { onSubmit, bookToEdit, onEdit } = this.props;
     return axios.post('http://localhost:8000/api/books', {
         title,
         body,
         author,
-        notes,
+        thumbnail,
       })
         .then((res) => onSubmit(res.data))
-        .then(() => this.setState({ title: '', body: '', author: '', notes:'' }));
+        .then(() => this.setState({ title: '', body: '', author: '', thumbnail:'' }));
   }
 
   handleSubmit(){
@@ -78,7 +79,7 @@ class Form extends React.Component {
 
   render() {
     const { bookToEdit, isEditing } = this.props;
-    const { title, body, author, notes } = this.state;
+    const { title, body, author, thumbnail, notes } = this.state;
 
     return (
       <div>
@@ -86,6 +87,7 @@ class Form extends React.Component {
         {
          isEditing && title != '' && body != '' && author !='' ? 
          <div className="sticky col-12 col-lg-6 offset-lg-3">
+           <img src={thumbnail}></img>
         <div class="">Title</div>
         <input
           fieldset disabled={true}
@@ -113,7 +115,7 @@ class Form extends React.Component {
         <div class="">Notes</div>
         <input
           onChange={(ev) => this.handleChangeField('notes', ev)}
-          value={""}
+          value={notes}
           className="form-control my-3"
           placeholder="Book Notes"
         />

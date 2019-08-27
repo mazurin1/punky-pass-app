@@ -67,9 +67,11 @@ class Home extends React.Component {
       
                     </div>
                     <div className="card-body">
+                    <p className="font-color"></p> <p className="font-style"><img src={book.thumbnail} /></p>
+
                       <p className="font-color">Description:</p> <p className="font-style">{book.body}</p>
                       
-                      <p className="mt-3 font-color"><b>Notes: {book.notes}</b>
+                      <p className="mt-3 font-color">Notes: </p> <p>{book.notes}
                       </p>
                       <p className="mt-5"> Added: {moment(new Date(book.createdAt)).fromNow()}
                 
