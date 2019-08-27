@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const router = require('express').Router();
 const Books = mongoose.model('Books');
 
+const books = require('google-books-search');
+
 router.post('/', (req, res, next) => {
   const { body } = req;
 
@@ -98,9 +100,6 @@ router.post('/search', (req, res, next) => {
       },
     });
   }
-
-
-  const books = require('google-books-search');
 
   var options = {
       key: "AIzaSyCt01gDpWa9Wh12bmWL2Dmlk8_3F7SyYR8",
