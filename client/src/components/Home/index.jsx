@@ -22,14 +22,14 @@ class Home extends React.Component {
   componentDidMount() {
     const { onLoad } = this.props;
 
-    axios('http://localhost:8000/api/books')
+    axios('/api/books')
       .then((res) => onLoad(res.data));
   }
 
   handleDelete(id) {
     const { onDelete } = this.props;
 
-    return axios.delete(`http://localhost:8000/api/books/${id}`)
+    return axios.delete(`/api/books/${id}`)
       .then(() => onDelete(id));
   }
 
