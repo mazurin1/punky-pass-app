@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/dist"));
 }
 
-mongoose.connect(process.env.MONGODB || 'mongodb://localhost/punkypass');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/punkypass');
 mongoose.set('debug', true);
 
 // Add models
