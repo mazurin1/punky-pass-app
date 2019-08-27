@@ -23,7 +23,12 @@ if(!isProduction) {
   app.use(errorHandler());
 }
 
-mongoose.connect('mongodb://localhost/punkypass');
+if (process.env.NODE_ENV === "production") {
+  console.log('test');
+  app.use(express.static("client/dist"));
+}
+
+mongoose.connect(process.env.MONGODB || 'mongodb://localhost/punkypass');
 mongoose.set('debug', true);
 
 // Add models
@@ -63,4 +68,4 @@ app.use((err, req, res) => {
 });
 
 
-const server = app.listen(8000, () => console.log('Server started on http://localhost:8000'));
+const server = app.listen(process.env.PORT || 8000, () => console.log('Server started on http://localhost:8000'));
