@@ -72,7 +72,7 @@ class SearchBar extends React.Component {
 
             this.state.search = event.target.value;
             const search = this.state.search;
-            return axios.post(`http://localhost:8000/api/books/search`, {
+            return axios.post(`/api/books/search`, {
                 search,
 
             })

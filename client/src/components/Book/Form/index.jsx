@@ -35,7 +35,7 @@ class Form extends React.Component {
 
   handleSave(title, body, author,thumbnail) {
     const { onSubmit, bookToEdit, onEdit } = this.props;
-    return axios.post('http://localhost:8000/api/books', {
+    return axios.post('/api/books', {
         title,
         body,
         author,
@@ -50,7 +50,7 @@ class Form extends React.Component {
     const { title, body, author, notes } = this.state;
 
     if(!bookToEdit) {
-      return axios.post('http://localhost:8000/api/books', {
+      return axios.post('/api/books', {
         title,
         body,
         author,
@@ -60,7 +60,7 @@ class Form extends React.Component {
         .then(() => this.setState({ title: '', body: '', author: '', notes: '' }));
     } else {
       
-      return axios.patch(`http://localhost:8000/api/books/${bookToEdit._id}`, {
+      return axios.patch(`/api/books/${bookToEdit._id}`, {
         title,
         body,
         author,
